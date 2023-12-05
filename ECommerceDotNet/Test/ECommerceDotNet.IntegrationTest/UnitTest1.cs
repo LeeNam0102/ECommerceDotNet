@@ -1,4 +1,4 @@
-namespace ECommerceDotNet.IntegrationTest
+namespace ECommerceDotNet.Test.IntegrationTest
 {
     [TestClass]
     public class UnitTest1

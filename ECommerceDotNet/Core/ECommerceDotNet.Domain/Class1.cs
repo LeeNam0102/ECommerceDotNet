@@ -1,4 +1,4 @@
-﻿namespace ECommerceDotNet.Domain
+﻿namespace ECommerceDotNet.Core.Domain
 {
     public class Class1
     {
