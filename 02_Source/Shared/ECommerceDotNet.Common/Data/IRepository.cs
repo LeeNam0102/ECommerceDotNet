@@ -1,4 +1,4 @@
-namespace Wata.Commerce.Common.Data
+namespace ECommerceDotNet.Common.Data
 {
     public interface IRepository<T>
     {

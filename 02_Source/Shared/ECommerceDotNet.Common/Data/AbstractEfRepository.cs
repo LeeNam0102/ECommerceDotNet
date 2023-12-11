@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-
-namespace Wata.Commerce.Common.Data
+namespace ECommerceDotNet.Common.Data
 {
     public class AbstractEfRepository<TDbContext, T>: IRepository<T> where TDbContext : DbContext where T : class
     {
