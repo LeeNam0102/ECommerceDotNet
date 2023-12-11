@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ECommerceDotNet.Common.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wata.Commerce.Common.Services;
+
 
 namespace ECommerceDotNet.Common.Middlewares
 {

@@ -1,5 +1,4 @@
-
-namespace Wata.Commerce.Common.Services
+namespace ECommerceDotNet.Common.Services
 {
     public interface IValidateTokenService
     {

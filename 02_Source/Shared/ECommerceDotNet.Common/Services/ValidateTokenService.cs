@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 
-namespace Wata.Commerce.Common.Services
+namespace ECommerceDotNet.Common.Services
 {
     public class ValidateTokenService : IValidateTokenService
     {
