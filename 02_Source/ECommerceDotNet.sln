@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4B488512-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8669CEA6-E703-429C-9B42-071BCB88BF49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceDotNet.Core.Domain", "Core\ECommerceDotNet.Domain\ECommerceDotNet.Core.Domain.csproj", "{46A2B19A-562C-4D9F-B124-5320D7C14122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceDotNet.Core.Domain", "Core\ECommerceDotNet.Core.Domain\ECommerceDotNet.Core.Domain.csproj", "{46A2B19A-562C-4D9F-B124-5320D7C14122}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceDotNet.Core.Application", "Core\ECommerceDotNet.Application\ECommerceDotNet.Core.Application.csproj", "{1FA10AFA-7ADF-42DE-AB07-5F043FC0FA4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceDotNet.Core.Application", "Core\ECommerceDotNet.Core.Application\ECommerceDotNet.Core.Application.csproj", "{1FA10AFA-7ADF-42DE-AB07-5F043FC0FA4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceDotNet.Test.UnitTest", "Test\ECommerceDotNet.UnitTest\ECommerceDotNet.Test.UnitTest.csproj", "{BF5466A7-2FDF-464E-8CDD-6C85C1F0CE04}"
 EndProject

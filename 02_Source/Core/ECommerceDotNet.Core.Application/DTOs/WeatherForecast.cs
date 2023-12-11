@@ -1,4 +1,4 @@
-namespace ECommerceDotNet.Presentation.WebAPI
+namespace ECommerceDotNet.Presentation.Api
 {
     public class WeatherForecast
     {

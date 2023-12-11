@@ -1,4 +1,4 @@
-using ECommerceDotNet.Presentation.WebAPI;
+using ECommerceDotNet.Presentation.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
