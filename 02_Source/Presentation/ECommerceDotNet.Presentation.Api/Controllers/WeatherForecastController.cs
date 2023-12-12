@@ -2,7 +2,7 @@ using ECommerceDotNet.Presentation.Api;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ECommerceDotNet.Presentation.Host.Controllers
+namespace ECommerceDotNet.Presentation.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
