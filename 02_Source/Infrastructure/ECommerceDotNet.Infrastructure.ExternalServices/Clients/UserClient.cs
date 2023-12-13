@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerceDotNet.Core.Application.DTOs.CasualDtos;
 
-namespace ECommerceDotNet.Infrastructure.Client.Service
+namespace ECommerceDotNet.Infrastructure.ExternalServices
 {
     public class UserClient : IUserClient
     {

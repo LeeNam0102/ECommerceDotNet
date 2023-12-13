@@ -41,7 +41,6 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
             {
                 return BadRequest();
             }
-
             UserDto? userDto = await _userService.InsertUserAsync(userRequestDto);
             userRequestDto.SetUserID(await GetUserID());
 
@@ -49,8 +48,6 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
             {
                 return Ok(userDto);
             }
-
-
             return StatusCode(500);
         }
         #endregion
@@ -63,20 +60,7 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
             {
                 return BadRequest();
             }
-
-            //UserDto? userCheckEmail = await _userService.GetUserByEmailAsync(userRequestDto.Email);
-            //if (userCheckEmail != null)
-            //{
-            //    return BadRequest(new ApiResponeDto
-            //    {
-            //        Success = false,
-            //        Message = "Email already exists!"
-            //    });
-            //}
-
             userRequestDto.SetUserID(await GetUserID());
-
-
 
             int total = await _userService.UpdateUserAsync(userRequestDto, id);
             if (total > 0)

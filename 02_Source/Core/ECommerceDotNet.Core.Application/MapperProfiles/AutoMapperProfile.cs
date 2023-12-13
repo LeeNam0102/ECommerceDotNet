@@ -11,7 +11,7 @@ namespace Wata.Commerce.Account.Business.MapperProfiles
     {
         public AutoMapperProfile()
         {
-            // Model to Dto
+            //Model to Dto
             #region Role
             CreateMap<Role, RoleDto>();
             #endregion
@@ -20,13 +20,22 @@ namespace Wata.Commerce.Account.Business.MapperProfiles
             CreateMap<User, UserDto>();
             #endregion
 
-
             //Dto to Model
             #region User
             CreateMap<UserRequestDto, User>();
             #endregion
+
+            #region Role
+            CreateMap<RoleRequestDto, Role>();
+            #endregion
+
+            //Filter
             #region UserFilter
             CreateMap<UserFilterDto, UserFilter>();
+            #endregion
+
+            #region RoleFilter
+            CreateMap<RoleFilterDto, RoleFilter>();
             #endregion
         }
     }

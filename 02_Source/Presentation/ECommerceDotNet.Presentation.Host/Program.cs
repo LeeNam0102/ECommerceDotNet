@@ -31,7 +31,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Account Aggregator for Web Clients",
         Version = "v1",
-        Description = "Account Aggregator for Web Clients"
+        Description = "Aggregator for Web Clients"
     });
 
     options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
@@ -71,6 +71,8 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 //Business
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+
 
 builder.Services.AddScoped<IValidateTokenService, ValidateTokenService>();
 
