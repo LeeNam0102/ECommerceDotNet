@@ -68,10 +68,12 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 //Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 //Business
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 
 builder.Services.AddScoped<IValidateTokenService, ValidateTokenService>();
