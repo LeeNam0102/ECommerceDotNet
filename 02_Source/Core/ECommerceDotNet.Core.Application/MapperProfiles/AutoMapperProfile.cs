@@ -24,6 +24,10 @@ namespace Wata.Commerce.Account.Business.MapperProfiles
             CreateMap<Cart, CartDto>();
             #endregion
 
+            #region Category
+            CreateMap<Category, CategoryDto>();
+            #endregion
+
             //Dto to Model
             #region User
             CreateMap<UserRequestDto, User>();
@@ -34,7 +38,11 @@ namespace Wata.Commerce.Account.Business.MapperProfiles
             #endregion
 
             #region Cart
-            CreateMap<CartRequestDto,Cart>();
+            CreateMap<CartBaseRequestDto,Cart>();
+            #endregion
+
+            #region Category
+            CreateMap<CategoryRequestDto, Category>();
             #endregion
 
             //Filter
@@ -47,6 +55,10 @@ namespace Wata.Commerce.Account.Business.MapperProfiles
             #endregion
             #region CartFilter
             CreateMap<CartFilterDto, CartFilter>();
+            #endregion
+
+            #region CategoryFilter
+            CreateMap<CategoryFilterDto, CategoryFilter>();
             #endregion
         }
     }

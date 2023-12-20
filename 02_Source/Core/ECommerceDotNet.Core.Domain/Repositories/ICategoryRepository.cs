@@ -12,7 +12,7 @@ namespace ECommerceDotNet.Core.Domain.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task<Cart?> GetByIdAsync(string id, bool? isDeep = false);
-        Task<PagedDto<Role>> GetListAsync(CategoryFilter filter);
+        Task<Category?> GetByIdAsync(string id, bool? isDeep = false);
+        Task<PagedDto<Category>> GetListAsync(CategoryFilter filter);
     }
 }

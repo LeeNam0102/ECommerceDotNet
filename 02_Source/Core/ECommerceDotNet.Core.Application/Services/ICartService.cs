@@ -13,8 +13,8 @@ namespace ECommerceDotNet.Core.Application.Services
     public interface ICartService
     {
         Task<CartDto?> InsertCartAsync(CartRequestDto requestDto);
-        Task<bool> UpdateCartAsync(CartRequestDto requestDto, string id);
-        Task<bool> DeleteCartAsync(string id);
+        Task<int> UpdateCartAsync(CartBaseRequestDto requestDto, string id);
+        Task<int> DeleteCartAsync(string id);
         Task<CartDto?> GetCartAsync(string id, bool isDeep = false);
         Task<PagedDto<CartDto>> GetListCartsAsync(CartFilterDto filterDto);
     }

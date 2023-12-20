@@ -37,7 +37,7 @@ namespace ECommerceDotNet.Core.Application.Services
         #endregion
 
         #region Delete Cart
-        public async Task<bool> DeleteCartAsync(string id)
+        public async Task<int> DeleteCartAsync(string id)   
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -45,9 +45,7 @@ namespace ECommerceDotNet.Core.Application.Services
                 throw new ArgumentException("Invalid Role id");
                 //return false;
             }
-
-            await _cartRepository.DeleteAsync(id);
-            return true;
+            return await _cartRepository.DeleteAsync(id);
         }
         #endregion
 
@@ -88,7 +86,7 @@ namespace ECommerceDotNet.Core.Application.Services
             Cart cart = new Cart();
             cart.Id = Guid.NewGuid().ToString();
             cart.CreatedAt = DateTime.Now;
-            cart.CompletedAt = requestDto.CompletedAt;
+            cart.CompletedAt = null;
             Cart newCart = await _cartRepository.InsertAsync(cart);
             if (newCart != null)
             {
@@ -100,7 +98,7 @@ namespace ECommerceDotNet.Core.Application.Services
         #endregion
 
         #region Update Cart
-        public async Task<bool> UpdateCartAsync(CartRequestDto requestDto, string id)
+        public async Task<int> UpdateCartAsync(CartBaseRequestDto requestDto, string id)
         {
             if (string.IsNullOrEmpty(id) || requestDto == null)
             {
@@ -112,13 +110,15 @@ namespace ECommerceDotNet.Core.Application.Services
 
             if (cart != null)
             {
-                cart.CompletedAt = requestDto?.CompletedAt;
-
-                await _cartRepository.UpdateAsync(cart);
-                return true;
+                //cart.CompletedAt = requestDto?.CompletedAt;
+                if (requestDto.status == 1)
+                    cart.CompletedAt= DateTime.Now;
+                else
+                    cart.CompletedAt = null;
+                return await _cartRepository.UpdateAsync(cart);
             }
 
-            return false;
+            return 0;
         }
         #endregion
     }

@@ -4,6 +4,7 @@ using ECommerceDotNet.Core.Application.DTOs.CasualDtos;
 using ECommerceDotNet.Core.Application.DTOs.FilterDtos;
 using ECommerceDotNet.Core.Application.DTOs.RequestDtos;
 using ECommerceDotNet.Core.Application.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -17,59 +18,59 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
 {
     [Route("api/Account/[controller]")]
     [ApiController]
-    public class CartController : ApiControllerBase
+    public class CategoryController:ApiControllerBase
     {
         #region Fields
         private readonly IConfiguration _config;
         private readonly ILogger _logger;
-        private readonly ICartService _cartService;
+        private readonly ICategoryService _categoryService;
         #endregion
 
         #region Constructors
-        public CartController(
+        public CategoryController(
             ILogger<RoleController> logger,
             IConfiguration configuration,
-            ICartService cartService)
+            ICategoryService categoryService)
         {
             _logger = logger;
             _config = configuration;
-            _cartService = cartService;
+            _categoryService = categoryService;
         }
         #endregion
 
-        #region Insert Cart
+        #region Insert Category
         [HttpPost]
-        public async Task<ActionResult<CartDto?>> Insert([FromBody] CartRequestDto cartRequestDto)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult<CategoryDto?>> Insert([FromForm] CategoryBaseRequestDto categoryBaseRequestDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            CategoryDto? categoryDto = await _categoryService.InsertCategoryAsync(categoryBaseRequestDto);
+            categoryBaseRequestDto.SetUserID(await GetUserID());
 
-            CartDto? cartDto = await _cartService.InsertCartAsync(cartRequestDto);
-            cartRequestDto.SetUserID(await GetUserID());
-
-            if (cartDto != null)
+            if (categoryDto != null)
             {
-                return Ok(cartDto);
+                return Ok(categoryDto);
             }
 
             return StatusCode(500);
         }
         #endregion
 
-        #region Update Cart
+        #region Update Category
         [HttpPut("{id}")]
-        public async Task<ActionResult<int>> Update([FromBody] CartBaseRequestDto cartRequestDto, string id)
+        public async Task<ActionResult<int>> Update([FromForm] CategoryBaseRequestDto categoryBaseRequestDto, string id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            cartRequestDto.SetUserID(await GetUserID());
+            categoryBaseRequestDto.SetUserID(await GetUserID());
 
-            int total = await _cartService.UpdateCartAsync(cartRequestDto, id);
+            int total = await _categoryService.UpdateCategoryAsync(categoryBaseRequestDto, id);
             if (total > 0)
             {
                 return Ok(total);
@@ -79,17 +80,17 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
         }
         #endregion
 
-        #region Delete Role
+        #region Delete Category
         [HttpDelete("{id}")]
         public async Task<ActionResult<int>> Delete(string id)
         {
-            CartDto? cartDto = await _cartService.GetCartAsync(id, false);
-            if (cartDto == null)
+            CategoryDto? categoryDto = await _categoryService.GetCategoryAsync(id, false);
+            if (categoryDto == null)
             {
                 return NotFound();
             }
 
-            int total = await _cartService.DeleteCartAsync(id);
+            int total = await _categoryService.DeleteCategoryAsync(id);
             if (total > 0)
             {
                 return Ok(total);
@@ -101,24 +102,25 @@ namespace ECommerceDotNet.Presentation.Api.Controllers
 
         #region Get Role
         [HttpGet("{id}")]
-        public async Task<ActionResult<CartDto?>> Get(string id, bool? isDeep)
+        public async Task<ActionResult<CategoryBaseRequestDto?>> Get(string id, bool? isDeep)
         {
-            CartDto? cartDto = await _cartService.GetCartAsync(id, isDeep ?? false);
-            if (cartDto == null)
+            CategoryDto? categoryDto = await _categoryService.GetCategoryAsync(id, isDeep ?? false);
+            if (categoryDto == null)
             {
                 return NotFound();
             }
 
-            return Ok(cartDto);
+            return Ok(categoryDto);
         }
         #endregion
 
         #region Get List Roles
         [HttpGet]
-        public async Task<ActionResult<PagedDto<CartDto>>> GetList([FromQuery] CartFilterDto filterDto)
+        public async Task<ActionResult<PagedDto<CategoryBaseRequestDto>>> GetList([FromQuery] CategoryFilterDto filterDto)
         {
-            return Ok(await _cartService.GetListCartsAsync(filterDto));
+            return Ok(await _categoryService.GetListCategoriesAsync(filterDto));
         }
         #endregion
     }
 }
+
